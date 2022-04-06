@@ -13,14 +13,20 @@ __license__ = "MIT"
 
 def main():
     """ Main entry point of the app """
-    increment = 0.25
-    for i in range(401):
+    increment = 0.05
+    for i in range(2001):
         rate = i * increment
-        stream = os.popen(f'./mcd-cli/bin/mcd duty {rate}')
+        stream = os.popen(f'../mcd-cli/bin/mcd duty {rate} --chain mainnet')
         output = stream.read().rstrip()
         rate = '%.2f' % rate
+
+
         #print(f"rates[{int(rate * 100)}] = {output};")
+
+        # txt
         print(f"{rate:>6}%: {output}")
+
+        # csv
         #print(f"{output},")
 
 
